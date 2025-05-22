@@ -33,14 +33,24 @@ main{
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
 }
-
+.displayList {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    gap: 2rem;
+    overflow-x: auto;
+}
 .displayList table{
     max-height: 70vh;
     display: block;
-    overflow-y: auto;
-    float: right;
+    width: 100%;
     font-size: .8rem;
     border: .2rem solid black;
+
+    border-collapse: collapse;
+    overflow-x: auto;
+    scrollbar-width: 2px
 }
 
 .displayList th{
@@ -51,10 +61,6 @@ main{
 .displayList td{
     font-style: italic;
     padding: .5rem 1rem;
-}
-
-.displayList button{
-    float: right;
 }
 
 
@@ -71,7 +77,7 @@ main{
 }
 
 #printBtn{
-    width: 30%;
+    width: fit-content;
 }
 
 .labelInput{
@@ -81,6 +87,8 @@ main{
 
 #editBtn{
     width: 50%;
+    margin: 0 auto;
+
 }
 
 #editBtn:hover{
@@ -97,7 +105,6 @@ main{
 .btnGroup{
     padding: .5rem 1rem;
     display: block;
-    margin: 0 auto;
     background-color: black;
     color: yellow;
     border: .4rem double wheat;
@@ -169,9 +176,4 @@ button.Checked{
     background-color: black;
     color: yellow;
     transition: all 1s;
-}
-
-#printBtn{
-    margin-top: 3rem;
-    width: 32%;
 }
