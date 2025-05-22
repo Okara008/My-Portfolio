@@ -1,0 +1,60 @@
+main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5rem;
+    color: black;
+    flex-wrap: wrap;
+}
+
+.socialgroup{
+    background-color: orange;
+    padding: 1rem 0;
+    width: 20rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-weight: bold;
+}
+
+.socialgroup img{
+    height: 5rem;
+}
+
+.socialgroup a{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: blue;
+    animation: color 5s 2 ease-in-out;
+    padding: .5rem 1rem;
+}
+
+.socialgroup a:hover{
+    background-color: rgba(0, 0, 0, 0.082);
+}
+@keyframes color{
+    from{
+        color: blue;
+    }
+    to{
+        color: rgba(0, 0, 255, 0.699);
+    }
+}
+
+
+@media screen and (max-width: 800px){
+    main{
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        margin-top: 5rem;
+        color: black;
+        flex-wrap: wrap;
+    }
+    
+}

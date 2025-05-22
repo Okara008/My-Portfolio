@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Chart</title>
+
+    <style>
+        body{
+            font-size: 20px;
+            background-color: grey;
+            padding: 2rem;
+        }
+
+        h1::before{
+            content: 'TiTLE: ';
+            color: wheat;
+        }
+        h1{
+            text-transform: uppercase;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-align: center;
+            margin-top: 0;
+            background-color: black;
+            color: grey;
+            padding: 1rem 2rem;
+        }
+        .container{
+            width: 20rem;
+            height: 20rem;
+            background-color: rgb(2, 255, 255);
+            background-color: rgb(2, 90, 255);
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .container::before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 22rem;
+            height: 22rem;
+            background-color: black;
+            border-radius: 50%;
+            z-index: -1;
+
+        }
+
+        /*.section{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform-origin: 0 100%;
+            transform: translateX(-50%) rotate(0deg);
+            width: .1rem;
+            height: 50%;    
+            background-color: black;
+            z-index: 1;
+            text-align: center;
+        }*/
+        
+        .centre{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:  translate(-50%, -50%);
+            width: 1rem;
+            height: 1rem;        
+            background-color: black;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .detailContainer{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .details{
+            margin-top: 3rem;
+            display: flex;
+            align-items: baseline;
+            justify-content: start;
+            gap: 1rem;
+            font-family: cursive;
+        }
+        .color{
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            border: .1rem black solid;
+        }
+        .name{
+            font-weight: bold;
+        }
+        .degree{
+            font-size: .9rem;
+            text-shadow: 0 0 .6rem black;
+            color: black;
+        }
+
+        @media screen and (max-width: 700px) {
+            .detailContainer{
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media screen and (max-width: 500px) {
+            body{
+                font-size: 15px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>POPULATION DISTRIBUTION</h1> -->
+    <!-- <div class="container">
+        <div class="centre"></div>
+    </div>
+    <div class="detailContainer"></div> -->
+
+    <script src="pieChart.js"></script>
+</body>
+</html>

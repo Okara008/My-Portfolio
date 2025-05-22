@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html{
+    font-size: 20px;
+    /* padding: 1rem 2rem; */
+    font-family: monospace;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.151);
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: wheat;
+    padding: 1rem;
+    /* flex-wrap: wrap; */
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo{
+    z-index: 2;
+    height: 2.5rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+}
+
+.navLinks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}    
+
+.navLinks a:hover{
+    text-decoration: underline; 
+    color: rgb(73, 51, 11);
+}
+
+.navLinks a:active{
+    text-decoration: underline; 
+    color: orange;
+}
+
+
+.contactLink{
+    height: 2.5rem;
+    padding: .7rem 2rem;
+    background-color: orange;
+    border-radius: 2rem;
+}    
+
+.contactLink:hover{
+    background-color: rgb(231, 177, 76);
+    border-radius: 2rem;
+    cursor: pointer;
+    color: white;
+}    
+
+#menuImg{
+    display: none;
+}
+
+.visibleNav{
+    visibility: visible;
+    opacity: 1;
+    transition: all 1s;
+    transform: translateX(0rem) ;
+}
+
+@media screen and (max-width: 700px) {
+    html{
+        font-size: 17px;
+    }
+    #menuImg{
+        display: block;
+        height: 1.5rem;
+        cursor: pointer;
+    }
+    nav{
+        visibility: hidden;
+        transition: all 1s;
+        opacity: 0.5;
+        flex-direction: column;
+        transform: translateX(-10rem) ;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        padding:6.5rem 1rem 2rem 1rem;
+        background-color: wheat;
+        justify-content: space-between;
+        height: 20rem;
+    }
+
+    .navLinks{
+        position: static;
+        flex-direction: column;
+        text-align: center;
+        transform: translateX(0);
+
+    }
+}

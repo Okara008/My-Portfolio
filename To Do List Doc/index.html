@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    
+    <link rel="stylesheet" href="toDo.css">
+    <link rel="stylesheet" href="toDOMediaQueries.css">
+
+</head>
+
+<body>
+    <article>
+        <h1>To~Do List</h1>
+
+        <section>
+            <div class="addItem">
+                <input type="text" name="InputItem" id="InputItem" placeholder="Add list items... "  autofocus>
+                <button type="button" id="addBtn">ADD </button><br>
+            </div>
+
+            <!-- <div class="itemsContainer">
+                 <ul class="itemlistContainer">
+                    <li class="items">Wake up</li>
+                </ul>
+                <img src="delete.svg" alt="delete" class="deleteItem">
+            </div> -->
+
+        </section>
+        <!-- <div class="editbtn"> -->
+            <button type="button" class="btnImgs" onclick="saveList(7)">
+                    <img src="save-file.svg" title="save" alt="save" id="savebtn">
+            </button>
+    
+            <button type="button" class="btnImgs" >
+                    <img src="open-file.svg" title="open" alt="open" id="openbtn" onclick="openList()">
+            </button>
+        <!-- </div> -->
+
+    </article>    
+
+    <script src="toDo.js"></script>
+    <!-- <script src="storeToDo.js"></script> -->
+</body>
+</html>

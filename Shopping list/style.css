@@ -1,0 +1,177 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1rem 2rem;
+    background-color: yellow;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+}
+
+header img{
+    height: 2rem;
+}
+
+button{
+    cursor: pointer;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.displayList table{
+    max-height: 70vh;
+    display: block;
+    overflow-y: auto;
+    float: right;
+    font-size: .8rem;
+    border: .2rem solid black;
+}
+
+.displayList th{
+    padding: 1rem;
+    text-align: start;
+}
+
+.displayList td{
+    font-style: italic;
+    padding: .5rem 1rem;
+}
+
+.displayList button{
+    float: right;
+}
+
+
+.displayList #tableName{
+    width: 7rem;
+}
+
+.itemName{
+    width: 8rem;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#printBtn{
+    width: 30%;
+}
+
+.labelInput{
+    font-family: cursive;
+    font-size: 1.4rem;
+}
+
+#editBtn{
+    width: 50%;
+}
+
+#editBtn:hover{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: .4rem double yellow;
+}
+
+#editBtn:active{
+    color: yellow;
+    border: .4rem double black;
+}
+
+.btnGroup{
+    padding: .5rem 1rem;
+    display: block;
+    margin: 0 auto;
+    background-color: black;
+    color: yellow;
+    border: .4rem double wheat;
+    font-weight: bold;
+    cursor: pointer;
+    transition: border 2s;
+    transition: background-color 2s;
+}
+
+.editList{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 2rem;
+}
+.inputGroup{
+    width: 100%;
+    padding: .5rem;
+    background-color: transparent;
+    border: .2rem solid black;
+    text-transform: uppercase;
+}
+
+#inputGroup:focus{
+    outline: none;
+}
+
+.addContainer, .amountContainer{
+    width: 100%;
+    position: relative;
+    border: inherit;
+}
+
+.recomendations{
+    position: absolute;
+    background-color: wheat;
+    width: inherit;
+    padding: .5rem 1rem;
+    z-index: 1;
+    visibility: visible;
+}
+
+.recomendations div{
+    padding: .2rem;
+    border-bottom: .05rem solid grey;
+}
+
+.toggleBtns{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.toggleBtns button{
+    border: none;
+    padding: .3rem 1rem;
+    width: 5rem;
+    border-radius: .5rem .5rem 0 0;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.199);
+    color: black;
+}
+
+button.Checked{
+    opacity: 1;
+    background-color: black;
+    color: yellow;
+    transition: all 1s;
+}
+
+#printBtn{
+    margin-top: 3rem;
+    width: 32%;
+}

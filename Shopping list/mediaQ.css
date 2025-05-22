@@ -1,0 +1,31 @@
+@media screen and (max-width: 1050px) {
+    main{
+        grid-template-columns: 1fr 1.5fr;
+        gap: 2rem;
+    }
+    
+    .displayList table{
+        font-size: .7rem;
+    }
+
+    .displayList th{
+        padding: .6rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+    }
+
+    .displayList td{
+        padding: .2rem .5rem;
+    }    
+    
+}
+
+@media screen and (max-width: 700px) {
+    main{
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+    }
+    
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reciept</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-direction: column;
+        }
+        .displayList table, .displayList button{
+            float: none;
+        }
+
+        table{
+            width: fit-content;
+        }
+
+        #totalOutput{
+            text-align: end;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        
+        #goBackLink{
+            color: blue;
+            font-weight: 500;
+            text-decoration: none;
+            visibility: hidden;
+        }
+
+        #goBackLink:hover{
+            text-decoration: underline;
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <section class="displayList">
+        <table>
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th id="itemName">NAME</th>
+                    <th>AMOUNT</th>
+                    <th>NUMBER OF ITEMS</th>
+                    <th>TOTAL AMOUNT</th>
+                </tr>
+            </thead>
+            <tbody id="tableContent">
+                <!-- <tr>
+                    <td>1</td>
+                    <td>DANO MILK</td>
+                    <td>3000</td>
+                    <td>3</td>
+                    <td>9000</td>
+                </tr> -->
+            </tbody>
+        </table>
+        <p id="totalOutput"></p>
+        <a href="index.html" id="goBackLink" >Go Back</a>
+    </section>
+
+    <script>
+        let name = window.sessionStorage.getItem("Name");
+        let prices = window.sessionStorage.getItem("amount");
+        let totalSum = window.sessionStorage.getItem("totalSum");
+        let numOfItems = window.sessionStorage.getItem("numOfItems");
+        let totalAmount = window.sessionStorage.getItem("totalAmount");
+        const totalOutput = document.getElementById("totalOutput");
+        const goBackLink = document.getElementById("goBackLink");
+        
+        name = JSON.parse(name);
+        prices = JSON.parse(prices);
+        numOfItems = JSON.parse(numOfItems);
+        totalAmount = JSON.parse(totalAmount);
+        
+        for (let i = 0; i < name.length; i++) {
+            createRow(name[i], numOfItems[i], i, prices[i], totalAmount[i])
+        }
+        totalOutput.textContent = `Total: ₦${totalSum}`
+        
+        function createRow(itemName, numOfItems, index, prices, totalAmount) {
+            let tableRow = document.createElement("tr");
+            tableContent.append(tableRow);
+
+            let sn = document.createElement("td");
+            sn.textContent = index+1;
+            tableRow.append(sn);
+
+            let nameOutput = document.createElement("td");
+            nameOutput.textContent = itemName;
+            tableRow.append(nameOutput);
+
+            let pricesOutput = document.createElement("td");
+            pricesOutput.textContent = prices;
+            tableRow.append(pricesOutput);
+
+            let numOfItemsOutput = document.createElement("td");
+            numOfItemsOutput.textContent = numOfItems;
+            tableRow.append(numOfItemsOutput);
+
+            let totalAmountOutput = document.createElement("td");
+            totalAmountOutput.textContent = totalAmount;
+            tableRow.append(totalAmountOutput);
+        }
+    
+        window.print();
+
+        setTimeout(() => {
+            goBackLink.style.visibility = "visible";            
+        }, 3000);
+    </script>
+</body>
+</html>

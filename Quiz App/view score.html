@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Score</title>
+    <link rel="stylesheet" href="exam.css">
+</head>
+<body>
+    <article>
+        <a href="Index.html"><button>GO Back</button></a>
+        <p id="score"></p>
+    </article>
+
+    <script>
+        const score = document.getElementById("score")
+        const candidatename = window.sessionStorage.getItem("candidateName")
+        let scored = window.sessionStorage.getItem("scored")
+        const total = window.sessionStorage.getItem("total")
+        let emoji;
+        let miss;
+
+        console.log(scored);
+        
+        if(scored == 0){
+            emoji = "😔😭"
+            miss = 1
+        }
+        else if(scored > 0 && scored < 4){
+            emoji = "😓😪"
+            miss = 2
+        }
+
+        else if(scored == 4 || scored == 5){
+            emoji = "😐😣"
+            miss = 3
+        }
+
+        else if(scored == 6 || scored == 7){
+            emoji = "😳🙂"
+            miss = 4
+        }
+
+        else if(scored == 8 || scored == 9){
+            emoji = "😀😃"
+            miss = 5
+        }
+
+        else if(scored == 10){
+            emoji = "🤩😁🥰"
+            miss = 6
+        }
+
+        score.textContent = `${candidatename} scored: ${scored} out of ${total}  ${emoji}`
+        console.log(miss, scored);
+        console.log(`${candidatename} scored: ${scored} out of ${total} ${emoji}`);
+         
+    </script>
+</body>
+</html>

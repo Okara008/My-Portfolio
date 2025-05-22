@@ -1,0 +1,31 @@
+#profilePicture{
+    height: 13rem;
+    border-radius: 50%;
+    width: 13rem;
+    object-fit: cover;
+}
+
+#fullname{
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+main{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-transform: capitalize;
+}
+
+main a{
+    height: 100%;
+    padding: .7rem 2rem;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+}

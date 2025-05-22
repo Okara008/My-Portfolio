@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Ease</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaQ.css">
+</head>
+<body>
+    <header>
+        <h1>Shopping list</h1>
+        <img src="../img/logo.svg" alt="">
+    </header>
+
+    <main>
+        <section class="editList">
+            <div class="toggleBtns">
+                <button class="Checked AddRemoveBtns" >+</button>
+                <button class=" AddRemoveBtns" >-</button>
+            </div>
+
+            <div class="addContainer">
+                <label for="inputElement" class="labelInput labelAddRemove" >ADD:</label><br>
+                <input type="text" id="inputElement" class="inputGroup"><br>
+
+            </div>
+
+            <div class="amountContainer">
+                <label for="amountInput"  class="labelInput">Amount: </label><br>
+                <input type="number" name="amount" id="amountInput" min="1"  class="inputGroup">
+            </div>
+            <button id="editBtn" class="btnGroup">ADD</button>
+        </section>
+
+        
+        <section class="displayList">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th id="tableName">NAME</th>
+                        <th>AMOUNT</th>
+                        <th>NUMBER OF ITEMS</th>
+                        <th>TOTAL AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContent">
+                    <!-- <tr>
+                        <td>1</td>
+                        <td class="itemName">ORAL-B TOOTHPASTE errrerer</td>
+                        <td>3000</td>
+                        <td>3</td>
+                        <td>₦9000</td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <button id="printBtn" class="btnGroup">Print Receipt</button>
+        </section>
+        
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

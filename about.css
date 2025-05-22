@@ -1,0 +1,48 @@
+/* html{
+    overflow-x: hidden;
+} */
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    height: 20rem;
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+main p{
+    /* width: 20rem; */
+    margin-top: 2rem;
+    text-align: start;
+}
+
+main img{
+    width: 20rem;
+    height: 20rem;
+    max-width: 90vw;
+    object-fit: cover;
+    border-radius:0 0 5rem 5rem;
+}
+
+#seeMore{
+    color: blue;
+    font-style: italic;
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+#seeMore:hover{
+    color: rgba(0, 0, 255, 0.7);
+}
+
+#seeMore:active{
+    color: rgba(0, 0, 255, 0.5);
+}
+
+@media screen and (max-width: 1500px){
+    main{
+        grid-template-columns: 1fr;
+    }
+    
+}

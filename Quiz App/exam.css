@@ -1,0 +1,168 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: .3rem 2rem ;
+    background-image: linear-gradient(60deg, orange, wheat);
+}
+
+h1{
+    text-transform: capitalize;
+    text-decoration: dashed underline black;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#input-name{
+    display: flex;
+    align-items:end;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+#input-name label{
+    display: block;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1;
+}
+    
+input[type = text]{
+    font-size: .8rem;
+    padding: .2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    background-color: white;
+    border: .1rem black solid;
+}
+
+input[type = text]:focus{
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+h2::before{
+    content: "Subject: ";
+}
+
+h2{
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+ol{
+    margin: 0 2rem;
+}
+
+li{
+    margin-bottom: 1rem;
+}
+
+input[type = radio]{
+    appearance: none;
+    padding: .2rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin-right: 1rem;
+    
+}
+
+input[type = radio]::after{
+    content: attr(value);
+}
+
+li label{
+    text-transform: capitalize;
+    font-size: .8em;
+    cursor: pointer;
+}
+
+input[type = radio]:checked{
+    background-color: navy;
+    color: wheat;
+}
+
+button{
+    background-color: blue;
+    color: wheat;
+    border: none;
+    padding: .4rem .9rem;
+    font-size: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgba(0, 0, 255, 0.8);
+}
+
+p#score{
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#error{
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+select{
+    font-size: 1rem;
+    padding: .1rem;
+    text-transform: uppercase;
+    margin: 0 auto;
+    display: block;
+    border: .2rem black double;
+}
+
+option{
+    text-transform: uppercase;
+}
+
+section{
+    display: none;
+}
+
+option:hover{
+    background-color: black;
+    color: wheat;
+}
+
+@media screen and (max-width: 550px) {
+    h1{
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    #input-name{
+        gap: 1rem;
+    }
+    
+    #input-name label{
+        font-size: 1rem;
+    }
+    
+    input[type = text]{
+        font-size: .6rem;
+        padding: .2rem;
+    }
+    
+    h2{
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    li {
+        font-size: .8rem;
+    }
+}
