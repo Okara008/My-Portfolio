@@ -103,7 +103,7 @@ a{
         opacity: 0.5;
         flex-direction: column;
         transform: translateX(-10rem) ;
-        position: fixed;
+        position: absolute;
         z-index: 1;
         top: 0;
         left: 0;
