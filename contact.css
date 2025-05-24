@@ -8,6 +8,7 @@ main{
     color: black;
     padding:0 2rem;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
 }
 
 .socialgroup{
