@@ -1,0 +1,300 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: gray;
+    height: 100vh;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding:1rem 2rem;
+    background-color: wheat;
+    z-index: 2;
+}
+
+#logo{
+    height: 3rem;
+}
+
+#menuImg{
+    display: none;
+    height: 2rem;
+    cursor: pointer;
+    transition: opacity 1s ;
+    z-index: 2;
+}
+
+#menuImg:hover{
+    opacity: .5;
+}
+
+#logo:hover{
+    filter: blur(1px);
+}
+
+#title{
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: overline;
+    max-width: 10rem;
+    border-top: .1rem black solid;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+}
+
+.editNav{
+    text-transform: uppercase;
+    border-bottom: .15rem black dashed;
+    cursor: pointer;
+    padding: .5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    text-align: center;
+}
+
+.editNav:hover{
+    border-bottom: .15rem black solid;
+    background-color: rgba(255, 166, 0, 0.5);
+    transition: background-color 1s;
+}
+
+.editNav:active{
+    transition: none;
+    border-bottom: .15rem black dotted;
+    box-shadow: 2px 2px 2px black;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.editDetails{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: wheat;
+    width: fit-content;
+    margin-top: 5rem;
+    font-size: .9rem;
+    gap: .4rem;
+    visibility: hidden;
+
+    height: calc(100vh - 5rem);
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    transform: translateX(-9rem);
+    opacity: 0;
+    transition: all 1s;
+}
+
+.fileRetrieve{
+    text-align: start;
+}
+
+.showSection{
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0rem);
+}
+
+.casingDiv div{
+    margin-bottom: 1rem;
+}
+
+.editDetails input[type = "number"]{
+    width: 5rem;
+    font-size: .6rem;
+    padding: .5rem;
+}
+
+.editDetails button{
+    width: 100%;
+    padding: .4rem .8rem;
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 0 1rem 0 0;
+    /* box-shadow: 0 0 10px black; */
+    margin-top: 1rem;
+}
+
+.Xbad{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 100%;
+    padding-bottom: .5rem;
+    text-align: center;
+    border-bottom: .2rem black solid;
+}
+
+.Xbad:hover{
+    color: blue;
+}
+
+.Xbad:active{
+    background-color: rgba(0, 0, 0, 0.315);
+}
+
+.Btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 1;
+}
+
+.Btns button{
+    width: 7rem;
+    height: 2rem;
+    text-transform: capitalize;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.newBtn{
+    background-color: green;
+    color: white;
+}
+
+.openBtn{
+    background-color: orange;
+    color: black;
+}
+
+.saveBtn{
+    background-color: blue;
+    color: white;
+}
+
+.editBtn{
+    background-color: yellow;
+    color: black;
+}
+
+button:hover{
+    box-shadow: 0 0 5px black;
+}
+
+button:active{
+    transform: translate(3px, 3px);
+}
+
+textarea{
+    width: 100%;
+    height: calc(100vh - 5rem);
+    resize: none;
+    padding: 2rem 2rem 1rem;
+    background-color: #F0F0F0 ;
+    color: #000080;
+    display: block;
+    font-size: 1rem;
+    caret-color: #ff0000;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+.fileNames{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: .7rem 2rem;
+    max-width: 10rem;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: .2rem black double;
+}
+
+.fileNames img{
+    position: absolute;
+    right: .5rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .8;
+}
+
+.fileNames:hover{
+    background-color: rgba(255, 255, 255, 1);
+    text-decoration: underline;
+}
+.fileNames:active{
+    background-color: rgba(255, 255, 0, 0.185);
+    text-decoration: underline;
+}
+.fileNames img:hover{
+    filter: drop-shadow(0 0 5px black);
+}
+
+.fileNames img:active{
+    filter: drop-shadow(0 0 5px wheat);
+}
+
+
+@media screen and (max-width: 900px) {
+    .editContent{
+        position: relative;
+    }
+    .Btns{
+        visibility: hidden;
+        background-color: wheat;
+        padding: 2rem;
+        position: absolute;
+        flex-direction: column;
+        top:calc(100% + 1rem);
+        left: 50%;
+        transform: translate(-50%, -90%);
+        opacity: 0;
+        transition: all 1s linear;
+    }
+
+    #menuImg{
+        display: block;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    html{
+        font-size: 14px;
+    }    
+    header{
+        padding:1rem;
+    }
+    #title{
+        max-width: 8rem;
+    }
+    #menuImg{
+        height: 1.5rem;
+    }
+
+}
+
+.visibleBtns{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, 0%);
+}

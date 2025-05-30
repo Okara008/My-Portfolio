@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Pad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.svg" alt="LOGO" id="logo">
+
+        <div class="editContent">
+            <img src="menuStraight.svg" alt="menu" id="menuImg">
+        
+            <div class="Btns">
+                <button class="newBtn" onclick="newFunc()">new</button>
+                <button class="openBtn" onclick="openFunc()">open</button>
+                <button class="saveBtn" onclick="saveFunc()">Save</button>
+                <button class="editBtn" onclick="editFunc()">edit</button>
+            </div>
+        </div>
+
+        <section class="editDetails">
+            <div class="editNav">font size</div>
+            <div class="editNav">casing</div>
+            <div class="editNav">color </div>
+            <div class="editNav">bold </div>
+            <div class="editNav">font family </div>
+            <span class="Xbad" title="remove">x</span>
+        </section>
+
+        <aside class="editDetails editAside">
+            <label for="fontSize">Font Size (px)</label><br>
+            <input type="number" name="Font-Size" id="fontSize" value="17"><br>
+            <button class="applyEdit">Apply</button>
+            <span class="Xbad" title="remove">x</span>
+        </aside>
+
+        <aside class="editDetails editAside">
+            <div class="casingDiv">
+                <div>
+                    <input type="radio" name="casing" id="none" checked class="radioCasing" value="none">
+                    <label for="none">None</label>
+                </div>
+                <div>
+                    <input type="radio" name="casing" id="uppercase" class="radioCasing" value="uppercase">
+                    <label for="uppercase">Upper Casing</label>
+                </div>
+                <div>
+                    <input type="radio" name="casing" id="Lowercase" class="radioCasing" value="lowercase">
+                    <label for="Lowercase">Lower Casing</label>
+                </div>
+            </div>
+            <button class="applyEdit">Apply</button>
+            <span class="Xbad" title="remove">x</span>
+        </aside>
+
+        <aside class="editDetails editAside">
+            <label for="fontColor">Choose color:</label><br>
+            <input type="color" name="Font-Color" id="fontColor"><br>
+            <button class="applyEdit">Apply</button>
+            <span class="Xbad" title="remove">x</span>
+        </aside>
+
+        <aside class="editDetails editAside">
+            <div class="casingDiv">
+                <div>
+                    <input type="radio" name="font-weight" class="radioBold" value="bold" id="bold">
+                    <label for="bold">Bold</label><br>
+                </div>
+                <div>
+                    <input type="radio" checked name="font-weight" class="radioBold" value="400" id="normal">
+                    <label for="normal">Normal</label><br>
+                </div>
+            </div>
+            <button class="applyEdit">Apply</button>
+            <span class="Xbad" title="remove">x</span>
+        </aside>
+        
+        <aside class="editDetails editAside">
+            <div class="casingDiv">
+                <div>
+                    <input type="radio" name="font-family" class="radioFamily" value="monospace" id="monospace">
+                    <label for="monospace">Monospace</label><br>
+                </div>
+                <div>
+                    <input type="radio"  name="font-family" class="radioFamily" value="cursive" id="cursive">
+                    <label for="cursive">Cursive</label><br>
+                </div>
+                <div>
+                    <input type="radio"  name="font-family" class="radioFamily" value="Arial, Helvetica, sans-serif" id="Arial">
+                    <label for="Arial">Arial</label><br>
+                </div>
+                <div>
+                    <input type="radio" checked name="font-family" class="radioFamily" value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" id="SegoeUI" >
+                    <label for="SegoeUI">Segoe UI</label><br>
+                </div>
+                <div>
+                    <input type="radio"  name="font-family" class="radioFamily" value="'Times New Roman', Times, serif" id="TimesNewRoman">
+                    <label for="TimesNewRoman">Times New Roman</label><br>
+                </div>
+                <div>
+                    <input type="radio"  name="font-family" class="radioFamily" value="Georgia, 'Times New Roman', Times, serif" id="Georgia">
+                    <label for="Georgia">Georgia</label><br>
+                </div>
+            </div>
+            <button class="applyEdit">Apply</button>
+            <span class="Xbad" title="remove">x</span>
+        </aside>
+        
+        <aside class="editDetails fileRetrieve">
+            <span class="Xbad" title="remove">x</span>
+            <!-- <div class="fileNames">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem beatae facilis deleniti perspiciatis vero doloribus eius earum quidem dolor. Eos assumenda id commodi saepe amet excepturi ea voluptates nesciunt possimus. <img src="../../img/delete.svg" alt="delete" class="deleteImg"></div>
+            <div class="fileNames">English <img src="../../img/delete.svg" alt="delete" class="deleteImg"></div>
+            <div class="fileNames">Biology <img src="../../img/delete.svg" alt="delete" class="deleteImg"></div> -->
+        </aside>
+
+        <div id="title">Untitled</div>
+    </header>
+
+    <textarea name="Note-Area" id="noteArea"></textarea>
+
+    <script src="script.js"></script>
+</body>
+</html>
