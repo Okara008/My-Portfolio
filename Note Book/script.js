@@ -25,11 +25,11 @@ let storeBold = 400;
 let documentName;
 let storeFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
 
-/*window.onbeforeunload = ()=>{
+window.onbeforeunload = ()=>{
     if (textarea.value) {
         return ""
     }
-}*/
+}
 
 function clearAside() {
     let visibleAsides = Array.from(document.querySelectorAll(".showSection"));
