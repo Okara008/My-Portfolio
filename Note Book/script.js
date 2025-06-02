@@ -17,6 +17,7 @@ let isNamed = false;
 let allFiles = addFile();
 const documentTitle = document.getElementById("title");
 const mainBtns = document.querySelector(".Btns")
+const infoEdit = document.getElementById("infoEdit");
 
 let storeFontSize = `16px`;
 let storeColor = "#000080";
@@ -25,11 +26,15 @@ let storeBold = 400;
 let documentName;
 let storeFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
 
-/*window.onbeforeunload = ()=>{
+window.onbeforeunload = ()=>{
     if (textarea.value) {
         return ""
     }
-}*/
+}
+
+infoEdit.addEventListener("click", () => {
+    window.alert(" Heading - #* text *# \n Bold - /* text */ \n Underline -  _* text *_ \n Italize -  [* text *] \n Break Line - text **")
+})
 
 function clearAside() {
     let visibleAsides = Array.from(document.querySelectorAll(".showSection"));
@@ -245,3 +250,4 @@ function getObjectCookie(documentname) {
 menuImg.addEventListener("click", () => {
     mainBtns.classList.toggle("visibleBtns")
 })
+
