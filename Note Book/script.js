@@ -25,11 +25,11 @@ let storeBold = 400;
 let documentName;
 let storeFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
 
-window.onbeforeunload = ()=>{
+/*window.onbeforeunload = ()=>{
     if (textarea.value) {
         return ""
     }
-}
+}*/
 
 function clearAside() {
     let visibleAsides = Array.from(document.querySelectorAll(".showSection"));
@@ -64,7 +64,7 @@ function saveFunc() {
     if (!isNamed) {
         do {
             isExisting = false;
-            documentName = prompt("What is the title of the document:");
+            documentName = prompt("What is the title of the document:").toUpperCase();
 
             if (allFiles) {
                 for (let i = 0; i < allFiles.length; i++) {
