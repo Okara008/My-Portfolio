@@ -1,164 +1,145 @@
-const section = document.querySelector("section");
-const textarea = document.querySelector("textarea");
-const fileRetrieveContainer = document.querySelector(".fileRetrieve");
-const applyEditBtn = document.querySelectorAll(".applyEdit");
-const radioCasing = document.querySelectorAll(".radioCasing");
-const radioBold = document.querySelectorAll(".radioBold");
-const radioFamily = document.querySelectorAll(".radioFamily");
-const deleteImgs = Array.from(document.querySelectorAll(".deleteImg"));
-const editNav = Array.from(document.querySelectorAll(".editNav"));
 const Xbad = Array.from(document.querySelectorAll(".Xbad"));
-const editAside = Array.from(document.querySelectorAll(".editAside"));
-const fontSize = document.getElementById("fontSize");
-const asideNav = Array.from(document.querySelectorAll(".editDetails"));
-const fontColor = document.getElementById("fontColor");
-let isNamed = false;
-let allFiles = addFile();
-const documentTitle = document.getElementById("title");
+const fileRetrieveContainer = document.querySelector(".fileRetrieve");
+let noteContentContainer = document.getElementById("noteContent");
+let documentTitle = document.getElementById("title");
+const menuImg = document.getElementById("menuImg");
+const mainBtns = document.querySelector(".Btns");
+createFileELements();
 
-let storeFontSize = `16px`;
-let storeColor = "#000080";
-let storeCasing = "none";
-let storeBold = 400;
-let documentName;
-let storeFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+function createFileELements() {
+    let fileNames = JSON.parse(localStorage.getItem("allFiles"));
 
-
-/*asideNav.forEach(element => {
-    element.addEventListener("click", () => {
-        for (let i = 0; i < asideNav.length; i++) {
-            const element = asideNav[i];
-            element.classList.remove("showSection");
-            console.log(element);
-            
-        }
-        console.log("Done 1");
+    for (let i = 0; i < fileNames.length; i++){
+        let fileElements = document.createElement("div");
+        fileElements.classList.add("fileNames");
+        fileElements.textContent = fileNames[i];
         
-    })
-})*/
-
-function newFunc() {
+        fileRetrieveContainer.append(fileElements);
+        fileElements.addEventListener("click", (e) => {
+            getObjectCookie(fileNames[i])
+        })
+        
+        let deleteImg = document.createElement("img");
+        deleteImg.src = "delete.svg";
+        deleteImg.addEventListener("click", (e) => {
+            const parent = e.target.offsetParent;
+            function removeElements(element){
+                return element != parent.textContent
+            }
     
+            fileRetrieveContainer.removeChild(parent);
+            fileNames = fileNames.filter(removeElements);
+            createCookie("allFiles", fileNames);
+            deleteCookie(parent.textContent);
+        })
+        fileElements.append(deleteImg);
+    }
+    
+}
+
+function getObjectCookie(documentname) {
+    let documentProp = localStorage.getItem(documentname) 
+    documentProp = JSON.parse(documentProp);
+    let {title, content, size, color, bold, family, casing} = documentProp;
+    documentTitle.textContent = title;
+    
+    showEditedNotes(content);
+    noteContentContainer.style.fontSize = size;
+    noteContentContainer.style.color = color;
+    noteContentContainer.style.fontWeight = bold;
+    noteContentContainer.style.fontFamily = family;
+    noteContentContainer.style.textTransform = casing;
 }
 
 function openFunc() {
     fileRetrieveContainer.classList.add("showSection");
 }
 
-function saveFunc() {
-    let isExisting;
-    if (!isNamed) {
-        do {
-            isExisting = false;
-            documentName = prompt("What is the title of the document:");
-
-            if (allFiles) {
-                for (let i = 0; i < allFiles.length; i++) {
-                    const element = allFiles[i];
-                    if (element == documentName) {
-                        alert("NAME IN USE")
-                        isExisting = true;
-                        break;
-                    }
-                }
-            }
-        } while (isExisting);
-    }
-
-    if (!isNamed && documentName) {
-        // if (!allFiles) {
-        //     allFiles = [];
-        // }
-        
-        allFiles.push(documentName);
-        createFileELements(documentName);
-    }
-
-    if (documentName) {
-        isNamed = true;
-        
-        let documentProp = {
-            title: documentName,
-            content: textarea.value,
-            size: storeFontSize,
-            casing: storeCasing,
-            color: storeColor,
-            bold: storeBold,
-            family: storeFamily,
-        }
-        
-        createCookie(documentName, documentProp)
-        createCookie("allFiles", allFiles)
-    }
-    else {
-        alert("Document Not Saved")
-    }
-}
-
-function editFunc() {
-    section.classList.add("showSection");
-}
-
-function addListeners() {
-    editNav.forEach(element => {
-        element.addEventListener("click", (e) => {
-            let index = editNav.indexOf(element);
-            editAside[index].classList.add("showSection");
-            section.classList.remove("showSection");
-        })
-    });
-
-    Xbad.forEach(element=> {
-        element.addEventListener("click", (e) => { 
-            const parent = e.target.offsetParent;
-            parent.classList.toggle("showSection");
-        })
-    })
-
-    applyEditBtn[0].addEventListener("click", (e) => {
-        let value = Number(fontSize.value);
-        textarea.style.fontSize = `${value}px`;
-        fontSize.value = null;
-    })
+function showEditedNotes(text) {
+    let startIndex, endIndex, beforeText, afterText, mainText, mainHTML;
+    noteContentContainer.innerHTML = text;
+    while (text.includes("/*") && text.includes("*/")) {
+        startIndex = text.indexOf("/*") ;
+        endIndex = text.indexOf("*/") + 2;
     
-    applyEditBtn[1].addEventListener("click", (e) => {    
-        for (let i = 0; i < radioCasing.length; i++) {
-            const element = radioCasing[i];
-            if (element.checked) {
-                textarea.style.textTransform = element.value
-                storeCasing = element.value;
-            }    
-        }
-    })
+        mainText = text.slice(startIndex + 2, endIndex - 2);
+        beforeText = text.slice(0, startIndex)
+        afterText = text.slice(endIndex)
+        mainHTML = `<span style="font-weight: bold;">${mainText}</span>`
+        text = beforeText + " " + mainHTML + " " + afterText;
+        noteContentContainer.innerHTML = text;
+    }
     
-    applyEditBtn[2].addEventListener("click", (e) => {    
-        let value = fontColor.value;
-        textarea.style.color = `${value}`;
-        storeColor = value
-    })
+    while (text.includes("#*") && text.includes("*#")) {
+        startIndex = text.indexOf("#*") ;
+        endIndex = text.indexOf("*#") + 2;
+    
+        mainText = text.slice(startIndex + 2, endIndex - 2);
+        beforeText = text.slice(0, startIndex)
+        afterText = text.slice(endIndex)
+        mainHTML = `<h2>${mainText}</h2>`
+        text = beforeText + " " + mainHTML + " " + afterText;
+        noteContentContainer.innerHTML = text;
+    }
+    
+    while (text.includes("*_") && text.includes("_*")) {
+        startIndex = text.indexOf("_*") ;
+        endIndex = text.indexOf("*_") + 2;
+    
+        mainText = text.slice(startIndex + 2, endIndex - 2);
+        beforeText = text.slice(0, startIndex)
+        afterText = text.slice(endIndex)
+        mainHTML = `<span style="text-decoration: underline;">${mainText}</span>`
+        text = beforeText + " " + mainHTML + " " + afterText;
+        noteContentContainer.innerHTML = text;
+    }
+    
+    while (text.includes("[*") && text.includes("*]")) {
+        startIndex = text.indexOf("[*") ;
+        endIndex = text.indexOf("*]") + 2;
+    
+        mainText = text.slice(startIndex + 2, endIndex - 2);
+        beforeText = text.slice(0, startIndex)
+        afterText = text.slice(endIndex)
+        mainHTML = `<span style="font-style: italic;">${mainText}</span>`
+        text = beforeText + " " + mainHTML + " " + afterText;
+        noteContentContainer.innerHTML = text;
+    }
+    
+    /*while (text.includes("(*") && text.includes("*)")) {
+        startIndex = text.indexOf("(*") ;
+        endIndex = text.indexOf("*)") + 2;
+    
+        mainText = text.slice(startIndex + 2, endIndex - 2);
+        beforeText = text.slice(0, startIndex)
+        afterText = text.slice(endIndex)
+        mainHTML = `<span style="display: block;">${mainText}</span>`
+        text = beforeText + " " + mainHTML + " " + afterText;
+        noteContentContainer.innerHTML = text;
+    }*/
+    
+    while (text.includes("**")) {
+        startIndex = text.indexOf("**") ;
+        endIndex = text.indexOf("**") + 2;
+    
+        beforeText = text.slice(0, startIndex)
+        afterText = text.slice(endIndex)
+        mainHTML = `<br>`
+        text = beforeText + " " + mainHTML + " " + afterText;
+        noteContentContainer.innerHTML = text;
+    }
+    console.log();
 
-    applyEditBtn[3].addEventListener("click", (e) => {    
-        for (let i = 0; i < radioBold.length; i++) {
-            const element = radioBold[i];
-            if (element.checked) {
-                textarea.style.fontWeight = element.value
-                storeBold = element.value
-            }    
-        }
-    })
-
-    applyEditBtn[4].addEventListener("click", (e) => {    
-        for (let i = 0; i < radioFamily.length; i++) {
-            const element = radioFamily[i];
-            if (element.checked) {
-                textarea.style.fontFamily = element.value
-                storeFamily = element.value
-            }    
-        }
-    })
-
+    console.log(noteContentContainer);
+    
 }
-addListeners();
+
+Xbad.forEach(element=> {
+    element.addEventListener("click", (e) => { 
+        const parent = e.target.offsetParent;
+        parent.classList.toggle("showSection");
+    })
+})
 
 function createCookie(documentName, documentProp) {
     let documentPropString = JSON.stringify(documentProp);
@@ -170,58 +151,6 @@ function deleteCookie(documentName) {
     localStorage.removeItem(documentName);   
 }
 
-function addFile() {
-    let fileArray = localStorage.getItem("allFiles");
-    if (!fileArray) {
-        return []
-    }
-    else {            
-        fileArray = JSON.parse(fileArray);
-        for (let i = 0; i < fileArray.length; i++) {
-            const element = fileArray[i];
-            createFileELements(element)
-        }
-return fileArray;
-    }
-}
-
-function createFileELements(documentName) {
-    let fileElements = document.createElement("div");
-    fileElements.classList.add("fileNames");
-    fileElements.textContent = documentName;
-    fileRetrieveContainer.append(fileElements);
-    fileElements.addEventListener("click", (e) => {
-        getObjectCookie(documentName)
-    })
-    
-    let deleteImg = document.createElement("img");
-    deleteImg.src = "../../img/delete.svg";
-    deleteImg.addEventListener("click", (e) => {
-        const parent = e.target.offsetParent;
-        function removeElements(element){
-            return element != parent.textContent
-        }
-
-        fileRetrieveContainer.removeChild(parent);
-        allFiles = allFiles.filter(removeElements);
-        createCookie("allFiles", allFiles);
-        deleteCookie(parent.textContent);
-    })
-    fileElements.append(deleteImg);
-}
-
-
-function getObjectCookie(documentname) {
-    let documentProp = localStorage.getItem(documentname) 
-    documentProp = JSON.parse(documentProp);
-    let {title, content, size, color, bold, family, casing } = documentProp;
-    
-    documentTitle.textContent = title;
-    textarea.value = content;
-    textarea.style.fontSize = size;
-    textarea.style.color = color;
-    textarea.style.fontWeight = bold;
-    textarea.style.fontFamily = family;
-    textarea.style.textTransform = casing;
-    
-}
+menuImg.addEventListener("click", () => {
+    mainBtns.classList.toggle("visibleBtns")
+})
