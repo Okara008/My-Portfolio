@@ -11,14 +11,16 @@
         <img src="logo.svg" alt="LOGO" id="logo">
 
         <div class="editContent">
-            <img src="menuStraight.svg" alt="menu" id="menuImg">
-        
             <div class="Btns">
                 <button class="newBtn" onclick="newFunc()">new</button>
                 <button class="openBtn" onclick="openFunc()">open</button>
                 <button class="saveBtn" onclick="saveFunc()">Save</button>
                 <button class="editBtn" onclick="editFunc()">edit</button>
+                <a href="./ViewNote.html"><button class="openBtn">View Notes</button></a>
             </div>
+            
+            <img src="menuStraight.svg" alt="menu" id="menuImg">
+            <div class="cover"></div>
         </div>
 
         <section class="editDetails">
@@ -108,6 +110,7 @@
             <button class="applyEdit">Apply</button>
             <span class="Xbad" title="remove">x</span>
         </aside>
+        <div id="title">Untitled</div>
         
         <aside class="editDetails fileRetrieve">
             <span class="Xbad" title="remove">x</span>
@@ -116,7 +119,6 @@
             <div class="fileNames">Biology <img src="../../img/delete.svg" alt="delete" class="deleteImg"></div> -->
         </aside>
 
-        <div id="title">Untitled</div>
     </header>
 
     <textarea name="Note-Area" id="noteArea"></textarea>
