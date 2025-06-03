@@ -213,8 +213,12 @@ function createFileELements(documentName) {
     fileElements.textContent = documentName;
     fileRetrieveContainer.append(fileElements);
     fileElements.addEventListener("click", (e) => {
-        getObjectCookie(documentName)
-    })
+        if (confirm("Save Changes or Press Cancel to Continue")) {
+            saveFunc();
+        }
+        else {
+            getObjectCookie(documentName)
+        }})
     
     let deleteImg = document.createElement("img");
     deleteImg.src = "delete.svg";
