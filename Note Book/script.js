@@ -44,10 +44,7 @@ function clearAside() {
 }
 
 function newFunc() {
-    if (confirm("Save Changes or Press Cancel to Continue")) {
-        saveFunc();
-    }
-    else {
+    if (confirm("Create New Note or Press Cancel to save")) {
         textarea.value = "";
         textarea.style.fontSize = storeFontSize;
         textarea.style.textTransform = storeCasing;
@@ -56,6 +53,9 @@ function newFunc() {
         documentTitle.textContent = "untitled";
         documentName = "";
         isNamed = false;
+    }
+    else {
+        saveFunc();
     }
 }
 
@@ -213,12 +213,13 @@ function createFileELements(documentName) {
     fileElements.textContent = documentName;
     fileRetrieveContainer.append(fileElements);
     fileElements.addEventListener("click", (e) => {
-        if (confirm("Save Changes or Press Cancel to Continue")) {
-            saveFunc();
+        if (confirm("Open Existing Note or Press Cancel to Save")) {
+            getObjectCookie(documentName)
         }
         else {
-            getObjectCookie(documentName)
-        }})
+            saveFunc();
+        }
+    })
     
     let deleteImg = document.createElement("img");
     deleteImg.src = "delete.svg";
