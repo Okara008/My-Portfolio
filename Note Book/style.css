@@ -9,6 +9,7 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #F0F0F0 ;
     height: 100vh;
+/*     overflow: hidden; */
 }
 
 header{
@@ -50,6 +51,7 @@ header{
     border-top: .1rem black solid;
     text-overflow: ellipsis;
     overflow: hidden;
+    text-transform: capitalize;
     white-space:nowrap;
 }
 
@@ -96,7 +98,7 @@ header{
     justify-content: start;
     transform: translateX(-9rem);
     opacity: 0;
-    transition: all 1s;
+    transition: all 500ms;
 }
 
 .fileRetrieve{
@@ -280,7 +282,7 @@ textarea:focus{
         left: 50%;
         transform: translate(-50%, -90%);
         opacity: 0;
-        transition: all 1s linear;
+        transition: all 500ms linear;
     }
 
     #menuImg{
