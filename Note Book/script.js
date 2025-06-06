@@ -44,7 +44,7 @@ function clearAside() {
 }
 
 function newFunc() {
-    if (confirm("Create New Note or Press Cancel to save")) {
+    if (confirm("Create New Note?")) {
         textarea.value = "";
         textarea.style.fontSize = storeFontSize;
         textarea.style.textTransform = storeCasing;
@@ -53,9 +53,6 @@ function newFunc() {
         documentTitle.textContent = "untitled";
         documentName = "";
         isNamed = false;
-    }
-    else {
-        saveFunc();
     }
 }
 
@@ -69,12 +66,12 @@ function saveFunc() {
     if (!isNamed) {
         do {
             isExisting = false;
-            documentName = prompt("What is the title of the document:").toUpperCase();
+            documentName = prompt("What is the title of the document:");
 
-            if (allFiles) {
+            if (allFiles && documentName) {
                 for (let i = 0; i < allFiles.length; i++) {
                     const element = allFiles[i];
-                    if (element == documentName) {
+                    if (element == documentName.toUpperCase()) {
                         alert("NAME IN USE")
                         isExisting = true;
                         break;
@@ -85,13 +82,14 @@ function saveFunc() {
     }
 
     if (!isNamed && documentName) {
+        documentName = documentName.toUpperCase()
         documentTitle.textContent = documentName;
         allFiles.push(documentName);
         createFileELements(documentName);
     }
 
     if (documentName) {
-
+        documentName = documentName.toUpperCase()
         isNamed = true;
         
         let documentProp = {
@@ -209,31 +207,34 @@ function addFile() {
 
 function createFileELements(documentName) {
     let fileElements = document.createElement("div");
+    let fileElementsChild = document.createElement("span");
+
     fileElements.classList.add("fileNames");
-    fileElements.textContent = documentName;
+    fileElementsChild.textContent = documentName;
     fileRetrieveContainer.append(fileElements);
-    fileElements.addEventListener("click", (e) => {
-        //if (confirm("Open Existing Note or Press Cancel to Save")) {
+    fileElements.append(fileElementsChild);
+    fileElementsChild.addEventListener("click", (e) => {
+        if (confirm(`Open ${documentName} Note?`)) {
             getObjectCookie(documentName)
-   //     }
-      //  else {
-          //  saveFunc();
-         // }
+        }
     })
     
     let deleteImg = document.createElement("img");
     deleteImg.src = "delete.svg";
     deleteImg.addEventListener("click", (e) => {
         const parent = e.target.offsetParent;
-        function removeElements(element){
-            return element != parent.textContent
-        }
+        if (confirm(`Delete ${parent.textContent} Note?`)) {
+            function removeElements(element){
+                return element != parent.textContent
+            }
 
-        fileRetrieveContainer.removeChild(parent);
-        allFiles = allFiles.filter(removeElements);
-        createCookie("allFiles", allFiles);
-        deleteCookie(parent.textContent);
+            fileRetrieveContainer.removeChild(parent);
+            allFiles = allFiles.filter(removeElements);
+            createCookie("allFiles", allFiles);
+            deleteCookie(parent.textContent);
+        }
     })
+
     fileElements.append(deleteImg);
 }
 
@@ -256,3 +257,10 @@ menuImg.addEventListener("click", () => {
     mainBtns.classList.toggle("visibleBtns")
 })
 
+let btnChildern = Array.from(mainBtns.children);
+
+btnChildern.forEach(element => {
+    element.addEventListener("click", () => {
+        mainBtns.classList.remove("visibleBtns")
+    })
+})
