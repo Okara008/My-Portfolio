@@ -213,12 +213,12 @@ function createFileELements(documentName) {
     fileElements.textContent = documentName;
     fileRetrieveContainer.append(fileElements);
     fileElements.addEventListener("click", (e) => {
-        if (confirm("Open Existing Note or Press Cancel to Save")) {
+        //if (confirm("Open Existing Note or Press Cancel to Save")) {
             getObjectCookie(documentName)
-        }
-        else {
-            saveFunc();
-        }
+   //     }
+      //  else {
+          //  saveFunc();
+         // }
     })
     
     let deleteImg = document.createElement("img");
