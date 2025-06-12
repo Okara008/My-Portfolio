@@ -1,0 +1,154 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 17px;
+    font-family: monospace;
+    padding: 1rem 2rem;
+    background-image: linear-gradient(45deg, orange, yellow);
+    /* height: 92vh;
+    margin: 4vh; */
+    height: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /* background-size: 100%; */
+}
+
+header{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 2rem;
+    margin: 0 auto;
+}
+
+#logo{
+    height: 3rem;
+}
+
+#logo:hover{
+    filter: blur(.05rem);
+}
+
+.imgControls{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.imgControls img{
+    height: 2rem;
+    cursor: pointer;
+}
+
+.imgControls img:hover{
+    filter:drop-shadow(0 0 5px blue);
+}
+
+.imgControls img:active{
+    transform: translate(.2rem, .2rem);
+}
+
+hr{
+    margin-block: 2rem;
+    border-color: brown;
+}
+
+main{
+    border: .2rem solid black;
+    width: 90%;
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: space-evenly;
+}
+
+.cards{
+    width: 4em;
+    height: 5em;
+    background-image: url("mystery.jfif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: 50%;
+    border: dashed 2px black;
+}
+
+.activeCards:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 5px black;
+    opacity: .8;
+}
+
+button{
+    padding: .5rem 1rem;
+    font-family: monospace;
+    text-transform: lowercase;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border-radius: 1rem 0;
+}
+
+.disabled{
+    opacity: .5;
+}
+
+.disabledCards{
+    opacity: .5;
+}
+
+button:hover{
+    border-color: transparent;
+    box-shadow: 0 0 10px grey;
+}
+
+button:active{
+    border-color: transparent;
+    box-shadow: 0 0 10px black;
+}
+
+@media screen and (max-width: 800px){
+    main{
+        font-size: 1rem;
+        padding: 1.2rem;
+        gap: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    html{
+        padding: 1rem;
+    }
+    header{
+        width: 100%;
+    }
+    hr{
+        margin-block: 1rem;
+    }
+    main{
+        width: 100%;
+        font-size: 1rem;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    #logo{
+        height: 2.5rem;
+    }
+
+    .imgControls img{
+        height: 1.5rem;
+    }
+}
