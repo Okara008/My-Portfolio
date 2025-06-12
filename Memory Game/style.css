@@ -70,9 +70,9 @@ main{
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
+    position: relative;
     background-color: rgba(0, 0, 0, 0.2);
     justify-content: space-evenly;
-    margin-bottom: 1rem;
 }
 
 .cards{
@@ -120,6 +120,15 @@ button:active{
     box-shadow: 0 0 10px black;
 }
 
+#message{
+    position: absolute;
+    color: white;
+    bottom: 0;
+    font-size: .9rem;
+    opacity: 1;
+    visibility: hidden;
+    text-align: center;
+}
 @media screen and (max-width: 800px){
     main{
         font-size: 1rem;
@@ -151,5 +160,9 @@ button:active{
 
     .imgControls img{
         height: 1.5rem;
+    }
+    #message{
+        font-size: .7rem;
+        margin: .1rem;
     }
 }
