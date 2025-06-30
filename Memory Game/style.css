@@ -9,12 +9,9 @@ html{
     font-family: monospace;
     padding: 1rem 2rem;
     background-image: linear-gradient(45deg, orange, yellow);
-    /* height: 92vh;
-    margin: 4vh; */
     height: 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    /* background-size: 100%; */
 }
 
 header{
@@ -25,6 +22,7 @@ header{
     padding: 1rem;
     gap: 2rem;
     margin: 0 auto;
+    position: relative;
 }
 
 #logo{
@@ -33,6 +31,15 @@ header{
 
 #logo:hover{
     filter: blur(.05rem);
+}
+
+.time{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: monospace;
+    font-weight: bold;
 }
 
 .imgControls{
@@ -47,8 +54,14 @@ header{
     cursor: pointer;
 }
 
+.imgControls img:hover{
+    filter:drop-shadow(0 0 2px blue);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .imgControls img:active{
-    transform: translate(.2rem, .2rem);
+    transform: scale(1);
 }
 
 hr{
@@ -88,32 +101,12 @@ main{
     opacity: .8;
 }
 
-button{
-    padding: .5rem 1rem;
-    font-family: monospace;
-    text-transform: lowercase;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: white;
-    border-radius: 1rem 0;
-}
-
 .disabled{
     opacity: .5;
 }
 
 .disabledCards{
     opacity: .5;
-}
-
-button:hover{
-    border-color: transparent;
-    box-shadow: 0 0 10px grey;
-}
-
-button:active{
-    border-color: transparent;
-    box-shadow: 0 0 10px black;
 }
 
 #message{
@@ -125,6 +118,41 @@ button:active{
     visibility: hidden;
     text-align: center;
 }
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 10rem;
+}
+
+h1{
+    text-transform: uppercase;
+    font-style: italic;
+    font-family: cursive;
+}
+
+section button{
+    padding: .5rem;
+    width: 7rem;
+    background-color: white;
+    text-align: center;
+    border-radius: 2rem;
+    border: 2px black solid;
+    cursor: grab;
+}
+
+section button:hover{
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+section button:active{
+    cursor: grabbing;
+    transform: scale(.9);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 @media screen and (max-width: 800px){
     main{
         font-size: 1rem;
