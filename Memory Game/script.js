@@ -1,6 +1,6 @@
 const mainGame = document.querySelector("main");
+let isRunning = false, canTurn = false, hasStarted = false, numOfCards = 15; //hasStarted == false!!!!
 const messageSpan = document.getElementById("message");
-let isRunning = false, canTurn = false, hasStarted = false, numOfCards = 10;
 let cards = [], cardsImg, isTurned, isWon = [], countTurn, pick, discardedImg, index, elapsedTime, numOfTurns = 0;
 
 function createCards(numOfCards) {
@@ -54,6 +54,7 @@ function startGame() {
     isWon = new Array(numOfCards*2).fill(false);
     if (!isRunning) {
         if (!hasStarted) {
+            
             cardsImg = getImages()
             checkCards(cardsImg)
             cardsImg = getFullImg(cardsImg)
@@ -63,16 +64,30 @@ function startGame() {
         
         else {
             createCards(numOfCards * 2);
-            giveEvent()
-            messageSpan.style.visibility = "hidden"
-            elapsedTime = Date.now();
-            isRunning = true;
+            for (let i = 0; i < cardsImg.length; i++) {
+                const element = document.getElementsByClassName("cards")[i];
+                element.style.backgroundImage =  `url(${cardsImg[i]})`
+            }
             
-            cards.forEach(element => { 
-                element.classList.add("activeCards");
-                element.classList.remove("disabledCards");
-            })
-            canTurn = true;
+            setTimeout(() => {
+                console.log(cardsImg);
+                
+                for (let i = 0; i < cardsImg.length; i++) {
+                    const element = document.getElementsByClassName("cards")[i];
+                    element.style.backgroundImage =  ``
+                }
+                giveEvent()
+                
+                messageSpan.style.visibility = "hidden"
+                elapsedTime = Date.now();
+                isRunning = true;
+                
+                cards.forEach(element => { 
+                    element.classList.add("activeCards");
+                    element.classList.remove("disabledCards");
+                })
+                canTurn = true;
+            }, 10000);
         }
     }
 }
@@ -173,13 +188,6 @@ function restartGame() {
     if (confirm("Are you sure you want to restart")) {
         isRunning = false;
         elapsedTime = 0;
-        // mainGame.className = "disabled";
-        /*cards.forEach(element => {
-            element.classList.remove("activeCards");
-            element.classList.add("disabledCards");
-            element.style.backgroundImage = ``;
-        })*/
-        // clearCards()
         hasStarted = false;
         startGame()
     }
