@@ -115,7 +115,7 @@ main{
     bottom: 0;
     font-size: .9rem;
     opacity: 1;
-    visibility: hidden;
+    /* visibility: hidden; */
     text-align: center;
 }
 
